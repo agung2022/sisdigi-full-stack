@@ -8,13 +8,13 @@ backend:
         - npm install
 frontend:
   phases:
-    preBuild:
-      commands:
-        - '# Masuk ke folder frontend dan install dependencies'
-        - cd generator-umkm-web
-        - npm install
+    # Kita gabungkan semua perintah di dalam 'build'
     build:
       commands:
+        - '# Masuk ke folder frontend'
+        - cd generator-umkm-web
+        - '# Install dependencies'
+        - npm install
         - '# Build aplikasi React'
         - npm run build
   artifacts:
