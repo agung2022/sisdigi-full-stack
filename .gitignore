@@ -1,0 +1,19 @@
+# Folder dependensi untuk Backend
+backend/node_modules
+
+# Folder dependensi untuk Frontend
+generator-umkm-web/node_modules
+
+# File environment variables (SANGAT PENTING!)
+.env
+backend/.env
+generator-umkm-web/.env
+
+# Folder build dari React
+generator-umkm-web/build
+
+# File log dan sistem operasi
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
