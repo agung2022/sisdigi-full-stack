@@ -3,24 +3,38 @@ backend:
   phases:
     build:
       commands:
+        - echo "Starting backend build"
         - cd backend
         - npm install
+        - echo "Backend build completed"
 frontend:
   phases:
     preBuild:
       commands:
+        - echo "Starting preBuild phase"
+        - echo "Current directory:" 
+        - pwd
+        - echo "Listing files:"
+        - ls -la
         - cd generator-umkm-web
+        - echo "Installing dependencies"
         - npm install
     build:
       commands:
+        - echo "Starting build phase"
+        - echo "Current directory:"
+        - pwd
+        - echo "Building React app"
         - npm run build
-        - '# Copy build to dist if needed'
-        - cp -r build dist || true
+        - echo "Build completed, checking output:"
+        - ls -la build/
+        - echo "Contents of build directory:"
+        - find build -type f | head -10
   artifacts:
-    baseDirectory: generator-umkm-web
+    baseDirectory: generator-umkm-web/build
     files:
-      - 'build/**/*'
-      - 'dist/**/*'
+      - '**/*'
   cache:
     paths:
       - generator-umkm-web/node_modules/**/*
+      - backend/node_modules/**/*
