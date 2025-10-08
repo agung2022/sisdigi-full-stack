@@ -3,7 +3,7 @@ backend:
   phases:
     build:
       commands:
-        - cd backend
+        - cd backend  
         - npm install
 frontend:
   phases:
@@ -14,15 +14,14 @@ frontend:
     build:
       commands:
         - npm run build
-        - echo "Creating dist directory as symlink to build"
-        - ln -sf build dist
-        - echo "Listing current directory:"
+        - echo "Copying build to dist directory"
+        - cp -r build dist
+        - echo "Verifying directories:"
         - ls -la
   artifacts:
-    baseDirectory: generator-umkm-web
+    baseDirectory: generator-umkm-web/dist
     files:
-      - 'build/**/*'
-      - 'dist/**/*'
+      - '**/*'
   cache:
     paths:
       - generator-umkm-web/node_modules/**/*
