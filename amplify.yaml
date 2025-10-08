@@ -1,0 +1,27 @@
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - '# Masuk ke folder backend dan install dependencies'
+        - cd backend
+        - npm install
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - '# Masuk ke folder frontend dan install dependencies'
+        - cd generator-umkm-web
+        - npm install
+    build:
+      commands:
+        - '# Build aplikasi React'
+        - npm run build
+  artifacts:
+    baseDirectory: generator-umkm-web/build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - generator-umkm-web/node_modules
+      - backend/node_modules
