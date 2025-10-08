@@ -8,20 +8,23 @@ backend:
         - npm install
 frontend:
   phases:
-    build:
+    preBuild:
       commands:
         - '# Masuk ke folder frontend'
         - cd generator-umkm-web
         - '# Install dependencies'
         - npm install
+    build:
+      commands:
         - '# Build aplikasi React'
         - npm run build
+        - '# Verify build directory exists'
+        - ls -la build/
   artifacts:
-    # Arahkan ke folder build di dalam folder frontend Anda
     baseDirectory: generator-umkm-web/build
     files:
       - '**/*'
   cache:
     paths:
-      - generator-umkm-web/node_modules/
-      - backend/node_modules/
+      - generator-umkm-web/node_modules/**/*
+      - backend/node_modules/**/*
